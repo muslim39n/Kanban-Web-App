@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}All Organizations{% endblock title %}
+
+{% block content %}
+    {% for org in object_list %}
+    <div style = "border-left: 1px solid silver; border-bottom: 1px solid silver; margin-top: 20px; padding: 10px">
+        <h2>{{ org.name }}</h2>
+        <p>{{ org.description }}</p>
+
+        {% for user in org.participants.all %}
+            <ul>
+                <li>{{ user.username }}</li>
+            </ul>
+        {% endfor %}
+    </div>
+    {% endfor %}
+{% endblock content %}
