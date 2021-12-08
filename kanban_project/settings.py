@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'organizations.apps.OrganizationsConfig',
     'boards.apps.BoardsConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 MIDDLEWARE = [
