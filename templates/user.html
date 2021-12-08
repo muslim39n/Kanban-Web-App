@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ object.username }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ object.username }}</h1>
+
+    <h3>Email: <b>{{ object.email }}</b></h3>
+    <hr>
+    {% if object.about %}
+    <div>
+        <h3>About:</h3>
+        <p>{{ object.about }}</p>
+    </div>
+    <hr>
+    {% endif %}
+
+    Organizations:
+    <ul>
+    {% for org in object.organization_set.all %}
+        <li>
+            <div>
+                <a href="{% url 'org-detail' org.id %}"><h4>{{ org.name }}</h4></a>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

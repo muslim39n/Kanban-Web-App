@@ -5,9 +5,15 @@
 {% block content %}
     <h2>{{ object.name }}</h2>
     <p>{{ object.description }}</p>
-    <ul>
-        {% for user in object.participants.all %}
-            <li>{{ user.username }}</li>
+    <a>
+        {% for memship in object.membership_set.all %}
+            <li>
+                <b><a href="{% url 'user-detail' memship.user.pk %}">{{ memship.user }}</a></b>
+                {% if memship.is_admin %}
+                    <span style="color: green; ">admin</span>
+                {% endif %}
+            </li>
+            
         {% endfor %}
     </ul>
 {% endblock content %}
